@@ -153,6 +153,70 @@ function Index() {
         </div>
       </section>
 
+      {/* Portfólio & Projetos Entregues */}
+      <section id="portfolio" className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20">
+        <span className="badge-gold">Prova de Qualidade • Trabalhos Entregues</span>
+        <h2 className="mt-5 max-w-2xl text-3xl sm:text-4xl">
+          Conheça nossas estruturas digitais em funcionamento.
+        </h2>
+        <p className="mt-4 max-w-2xl text-muted-foreground">
+          Navegue pelos projetos desenvolvidos e veja na prática o padrão de elegância, velocidade
+          e alta conversão que entregamos para nossos parceiros.
+        </p>
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {portfolio.map((project) => {
+            const shot = portfolioShots[project.id];
+            return (
+              <a
+                key={project.id}
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="card-soft group block overflow-hidden"
+              >
+                <div className="relative aspect-[16/10] overflow-hidden border-b border-border">
+                  {shot ? (
+                    <img
+                      src={shot}
+                      width={1200}
+                      height={760}
+                      alt={`Prévia do projeto ${project.name}`}
+                      loading="lazy"
+                      className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
+                  ) : (
+                    <div className="relative flex h-full w-full items-center justify-center overflow-hidden bg-navy">
+                      <span className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-gold-soft/25 blur-2xl" />
+                      <span className="absolute -bottom-12 -left-8 h-32 w-32 rounded-full bg-gold/10 blur-2xl" />
+                      <div className="text-center">
+                        <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-gold/40 bg-gold/10">
+                          <Sparkles className="h-6 w-6 text-gold" />
+                        </span>
+                        <p className="mt-3 text-sm font-bold text-navy-foreground">{project.name}</p>
+                        <p className="mt-1 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-gold">
+                          Prévia em atualização
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-navy/0 transition-colors duration-300 group-hover:bg-navy/20" />
+                  <span className="absolute bottom-4 right-4 inline-flex translate-y-2 items-center gap-1.5 rounded-full bg-navy px-3.5 py-1.5 text-xs font-bold text-navy-foreground opacity-0 shadow-[var(--shadow-soft)] transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                    Ver projeto <ArrowUpRight className="h-3.5 w-3.5 text-gold" />
+                  </span>
+                </div>
+                <div className="p-6">
+                  <span className="text-xs font-bold uppercase tracking-[0.12em] text-gold">
+                    {project.category}
+                  </span>
+                  <h3 className="mt-2 text-lg">{project.name}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{project.text}</p>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+
       {/* Métricas — dobra escura */}
       <section className="bg-navy py-14 text-navy-foreground sm:py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
