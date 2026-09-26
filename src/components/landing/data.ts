@@ -120,3 +120,27 @@ export const faqs = [
     a: "Profissionais liberais, médicas e médicos, esteticistas, arquitetos, advogados, consultores e comércios locais que querem uma vitrine organizada.",
   },
 ];
+
+export const portfolio = [
+  {
+    id: "railene-ferreira",
+    name: "Estúdio Railene Ferreira",
+    category: "Beleza & Estética",
+    text: "Landing page de alisamento seguro e terapia capilar, com rituais, galeria e agendamento direto pelo WhatsApp.",
+    url: "https://raiferreira.lovable.app",
+  },
+  {
+    id: "daniele-brandao-folio",
+    name: "Daniele Brandão · CX & Gestão",
+    category: "Portfólio profissional",
+    text: "Vitrine de assistente virtual premium, com apresentação, serviços e contato direto pelo WhatsApp.",
+    url: "https://cxdanielebrandao-folio.lovable.app",
+  },
+  {
+    id: "lojique-style-hub",
+    name: "Lojique Style Hub",
+    category: "Vitrine & E-commerce",
+    text: "Hub de estilo com vitrine de produtos organizada para converter na tela do celular.",
+    url: "https://lojique-style-hub.lovable.app",
+  },
+];
