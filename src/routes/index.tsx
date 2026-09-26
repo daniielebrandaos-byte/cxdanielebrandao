@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
+  ArrowUpRight,
   BadgeCheck,
   CalendarClock,
   FileSignature,
@@ -15,7 +16,9 @@ import {
   Star,
 } from "lucide-react";
 
+import folioShot from "@/assets/portfolio/folio.jpg";
 import heroMockup from "@/assets/hero-mockup.jpg";
+import raileneShot from "@/assets/portfolio/railene.jpg";
 import { AnamneseForm } from "@/components/landing/AnamneseForm";
 import {
   BRAND,
@@ -23,10 +26,16 @@ import {
   faqs,
   metrics,
   pains,
+  portfolio,
   services,
   steps,
   testimonials,
 } from "@/components/landing/data";
+
+const portfolioShots: Record<string, string> = {
+  "railene-ferreira": raileneShot,
+  "daniele-brandao-folio": folioShot,
+};
 
 const TITLE = "Presença Digital Expressa — página profissional no ar em 48h";
 const DESCRIPTION =
