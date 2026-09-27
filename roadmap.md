@@ -5,4 +5,3 @@
 - [x] Atualizar conteúdo para CX e jornada do cliente
 - [x] Completar formulário e envio pelo WhatsApp e e-mail
 - [x] Reorganizar serviços principais, habilidades e adicionais
-- [x] Adicionar recomendação inteligente de habilidades com base na necessidade do cliente

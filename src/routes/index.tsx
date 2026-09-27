@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 
 import { SpeechCard } from "@/components/landing/SpeechCard";
-import { SkillRecommender } from "@/components/landing/SkillRecommender";
 import { TriagemForm } from "@/components/landing/TriagemForm";
 import {
   BRAND,
@@ -161,7 +160,6 @@ function Index() {
               ))}
             </div>
           </div>
-          <SkillRecommender />
         </div>
       </section>
 
