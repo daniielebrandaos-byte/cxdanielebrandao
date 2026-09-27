@@ -15,7 +15,7 @@ export const skills = [
 ];
 
 export const coreServices = [
-  { title: "Atendimento e relacionamento", text: "Triagem de contatos, respostas ágeis, acompanhamento e pós-venda humanizado." },
+  { title: "Relacionamento e fidelização", text: "Triagem de contatos, respostas ágeis, acompanhamento e pós-venda humanizado." },
   { title: "Gestão de agenda e agendamentos", text: "Organização de compromissos, marcação de reuniões e prevenção de furos na agenda." },
   { title: "Operação comercial", text: "Qualificação de leads, apoio ao fechamento e cuidado contínuo com cada etapa da jornada." },
 ];
