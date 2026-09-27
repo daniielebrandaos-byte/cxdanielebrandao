@@ -126,7 +126,7 @@ function Index() {
 
       <section className="bg-surface py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <span className="badge-orange">Estratégia comercial com visão de jornada</span>
+          <span className="badge-orange">Foco em fidelização</span>
           <h2 className="mt-5 max-w-3xl text-3xl sm:text-4xl">Relacionamento que gera novas oportunidades com respeito ao momento do cliente.</h2>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             {strategies.map((strategy, index) => (
