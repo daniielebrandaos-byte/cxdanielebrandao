@@ -1,18 +1,22 @@
 import { useState } from "react";
-import { Linkedin, Lock, MessageCircle } from "lucide-react";
-import { LINKEDIN, WHATSAPP_NUMBER } from "./data";
+import { Linkedin, Lock, Mail, MessageCircle } from "lucide-react";
+import { EMAIL, LINKEDIN, WHATSAPP_NUMBER } from "./data";
 
 const dores = [
-  "Demora no atendimento",
-  "Vendas perdidas no WhatsApp",
-  "Falta de acompanhamento pós-venda",
-  "Clientes antigos esquecidos",
+  "Mais empatia e escuta ativa",
+  "Respostas ágeis e personalizadas",
+  "Acompanhamento em toda a jornada",
+  "Relacionamento próximo no pós-venda",
 ];
 const prazos = ["Imediato", "Nos próximos 7 dias", "Apenas cotando"];
 
 export function TriagemForm() {
   const [nome, setNome] = useState("");
   const [whats, setWhats] = useState("");
+  const [email, setEmail] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [site, setSite] = useState("");
   const [dor, setDor] = useState("");
   const [volume, setVolume] = useState("");
   const [prazo, setPrazo] = useState("");
@@ -20,13 +24,26 @@ export function TriagemForm() {
 
   function enviar(e: React.FormEvent) {
     e.preventDefault();
-    if (nome.trim().length < 2 || whats.replace(/\D/g, "").length < 10 || !dor || !volume.trim() || !prazo) {
-      setErro("Preencha todos os campos, com um WhatsApp válido (DDD + número).");
+    if (nome.trim().length < 2 || whats.replace(/\D/g, "").length < 10 || !email.includes("@") || !dor || !volume.trim() || !prazo) {
+      setErro("Preencha os campos obrigatórios com WhatsApp e e-mail válidos.");
       return;
     }
     setErro("");
-    const msg = `📋 Anamnese e Triagem Comercial\n\nNome/Empresa: ${nome}\nWhatsApp: ${whats}\nPrincipal dor: ${dor}\nVolume diário de contatos: ${volume}\nPrevisão de início: ${prazo}`;
+    const msg = montarMensagem();
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank", "noopener");
+  }
+
+  function montarMensagem() {
+    return `📋 Anamnese e Triagem de CX\n\nNome/Empresa: ${nome}\nWhatsApp: ${whats}\nE-mail: ${email}\nInstagram: ${instagram || "Não informado"}\nLinkedIn: ${linkedin || "Não informado"}\nSite: ${site || "Não informado"}\nO que espera de um atendimento humanizado: ${dor}\nVolume diário de contatos: ${volume}\nPrevisão de início: ${prazo}`;
+  }
+
+  function enviarEmail() {
+    if (nome.trim().length < 2 || whats.replace(/\D/g, "").length < 10 || !email.includes("@") || !dor || !volume.trim() || !prazo) {
+      setErro("Preencha os campos obrigatórios com WhatsApp e e-mail válidos.");
+      return;
+    }
+    setErro("");
+    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent("Anamnese e Triagem de CX")}&body=${encodeURIComponent(montarMensagem())}`;
   }
 
   const input =
@@ -42,8 +59,26 @@ export function TriagemForm() {
         WhatsApp para contato
         <input className={input} inputMode="tel" placeholder="(11) 90000-0000" value={whats} onChange={(e) => setWhats(e.target.value)} maxLength={20} />
       </label>
+      <label className="mt-5 block font-semibold">
+        E-mail
+        <input className={input} type="email" placeholder="voce@empresa.com.br" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={120} />
+      </label>
+      <div className="mt-5 grid gap-5 sm:grid-cols-2">
+        <label className="block font-semibold">
+          Instagram <span className="font-normal text-muted-foreground">(se tiver)</span>
+          <input className={input} placeholder="@seuperfil" value={instagram} onChange={(e) => setInstagram(e.target.value)} maxLength={120} />
+        </label>
+        <label className="block font-semibold">
+          LinkedIn <span className="font-normal text-muted-foreground">(se tiver)</span>
+          <input className={input} placeholder="linkedin.com/in/seuperfil" value={linkedin} onChange={(e) => setLinkedin(e.target.value)} maxLength={180} />
+        </label>
+      </div>
+      <label className="mt-5 block font-semibold">
+        Site <span className="font-normal text-muted-foreground">(se tiver)</span>
+        <input className={input} inputMode="url" placeholder="www.suaempresa.com.br" value={site} onChange={(e) => setSite(e.target.value)} maxLength={180} />
+      </label>
       <fieldset className="mt-5">
-        <legend className="font-semibold">Qual a sua principal dor hoje?</legend>
+        <legend className="font-semibold">O que você espera de um atendimento humanizado?</legend>
         <div className="mt-2 grid gap-2 sm:grid-cols-2">
           {dores.map((d) => (
             <label key={d} className={`flex cursor-pointer items-center gap-2 rounded-xl border px-3 py-2.5 ${dor === d ? "border-orange bg-orange/10" : "border-border"}`}>
@@ -80,7 +115,10 @@ export function TriagemForm() {
 
       {erro && <p role="alert" className="mt-4 text-sm font-semibold text-destructive">{erro}</p>}
 
-      <button type="submit" className="btn-orange mt-6 w-full text-base">Enviar triagem</button>
+      <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        <button type="submit" className="btn-orange w-full text-base"><MessageCircle className="h-5 w-5" /> Enviar pelo WhatsApp</button>
+        <button type="button" onClick={enviarEmail} className="btn-outline w-full text-base"><Mail className="h-5 w-5" /> Enviar por e-mail</button>
+      </div>
       <div className="mt-3 grid gap-3 sm:grid-cols-2">
         <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="btn-navy text-sm">
           <MessageCircle className="h-4 w-4" /> WhatsApp
