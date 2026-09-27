@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Linkedin, Lock, Mail, MessageCircle } from "lucide-react";
-import { EMAIL, LINKEDIN, WHATSAPP_NUMBER } from "./data";
+import { EMAIL, LINKEDIN, WHATSAPP_NUMBER, tools } from "./data";
 
 const dores = [
   "Mais empatia e escuta ativa",
@@ -9,6 +9,7 @@ const dores = [
   "Relacionamento próximo no pós-venda",
 ];
 const prazos = ["Imediato", "Nos próximos 7 dias", "Apenas cotando"];
+const ferramentas = tools.flatMap((tool) => tool.items);
 
 export function TriagemForm() {
   const [nome, setNome] = useState("");
@@ -20,6 +21,7 @@ export function TriagemForm() {
   const [dor, setDor] = useState("");
   const [volume, setVolume] = useState("");
   const [prazo, setPrazo] = useState("");
+  const [ferramentasSelecionadas, setFerramentasSelecionadas] = useState<string[]>([]);
   const [erro, setErro] = useState("");
 
   function enviar(e: React.FormEvent) {
@@ -34,7 +36,7 @@ export function TriagemForm() {
   }
 
   function montarMensagem() {
-    return `📋 Anamnese e Triagem de CX\n\nNome/Empresa: ${nome}\nWhatsApp: ${whats}\nE-mail: ${email}\nInstagram: ${instagram || "Não informado"}\nLinkedIn: ${linkedin || "Não informado"}\nSite: ${site || "Não informado"}\nO que espera de um atendimento humanizado: ${dor}\nVolume diário de contatos: ${volume}\nPrevisão de início: ${prazo}`;
+    return `📋 Anamnese e Triagem de CX\n\nNome/Empresa: ${nome}\nWhatsApp: ${whats}\nE-mail: ${email}\nInstagram: ${instagram || "Não informado"}\nLinkedIn: ${linkedin || "Não informado"}\nSite: ${site || "Não informado"}\nO que espera de um atendimento humanizado: ${dor}\nFerramentas utilizadas: ${ferramentasSelecionadas.length > 0 ? ferramentasSelecionadas.join(", ") : "Não informado"}\nVolume diário de contatos: ${volume}\nPrevisão de início: ${prazo}`;
   }
 
   function enviarEmail() {
@@ -86,6 +88,26 @@ export function TriagemForm() {
               {d}
             </label>
           ))}
+        </div>
+      </fieldset>
+      <fieldset className="mt-5">
+        <legend className="font-semibold">Quais destas ferramentas você utiliza atualmente?</legend>
+        <p className="mt-1 text-sm text-muted-foreground">Selecione todas que se aplicam.</p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {ferramentas.map((ferramenta) => {
+            const selecionada = ferramentasSelecionadas.includes(ferramenta);
+            return (
+              <label key={ferramenta} className={`flex cursor-pointer items-center gap-2 rounded-xl border px-3 py-2.5 ${selecionada ? "border-orange bg-orange/10" : "border-border"}`}>
+                <input
+                  type="checkbox"
+                  className="accent-orange"
+                  checked={selecionada}
+                  onChange={() => setFerramentasSelecionadas((atuais) => selecionada ? atuais.filter((item) => item !== ferramenta) : [...atuais, ferramenta])}
+                />
+                {ferramenta}
+              </label>
+            );
+          })}
         </div>
       </fieldset>
       <label className="mt-5 block font-semibold">

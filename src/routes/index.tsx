@@ -27,7 +27,6 @@ import {
   results,
   skills,
   strategies,
-  tools,
 } from "@/components/landing/data";
 
 const TITLE = "Daniele Brandão — Especialista em CX e Jornada do Cliente";
@@ -136,29 +135,6 @@ function Index() {
                 <p className="mt-3 text-muted-foreground">{strategy.text}</p>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-background py-16 sm:py-24">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
-            <div>
-              <span className="badge-orange">Habilidades</span>
-              <h2 className="mt-5 text-3xl sm:text-4xl">Ferramentas que conheço e utilizo.</h2>
-              <p className="mt-4 text-muted-foreground">Elas apoiam meu atendimento e a rotina do seu negócio; não são plataformas que ofereço como serviço.</p>
-            </div>
-            <div className="grid gap-5">
-              {tools.map((tool) => (
-                <article key={tool.group} className="card-soft p-6">
-                  <h3 className="text-lg">{tool.group}</h3>
-                  {tool.description && <p className="mt-2 text-sm text-muted-foreground">{tool.description}</p>}
-                  <ul className="mt-4 flex flex-wrap gap-2">
-                    {tool.items.map((item) => <li key={item} className="skill-chip">{item}</li>)}
-                  </ul>
-                </article>
-              ))}
-            </div>
           </div>
         </div>
       </section>
