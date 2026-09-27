@@ -30,7 +30,7 @@ export function SpeechCard() {
   }
 
   return (
-    <div className="mt-8 rounded-2xl border-2 border-orange bg-navy p-5 text-navy-foreground">
+    <div className="mt-8 rounded-2xl border border-orange/30 bg-orange/5 p-5 text-ink shadow-[var(--shadow-soft)]">
       <button
         type="button"
         onClick={toggle}
@@ -42,7 +42,7 @@ export function SpeechCard() {
         {speaking ? <Square className="h-5 w-5" /> : <Headphones className="h-5 w-5" />}
         {speaking ? "Parar leitura" : "Ouvir apresentação dos serviços em voz alta"}
       </button>
-      <p className="mt-3 text-center text-sm text-navy-foreground/75">
+      <p className="mt-3 text-center text-sm text-muted-foreground">
         {supported ? "Recurso de acessibilidade com a voz do seu próprio aparelho." : "Seu navegador não oferece leitura em voz alta."}
       </p>
     </div>
