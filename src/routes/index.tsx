@@ -63,33 +63,12 @@ function Index() {
         </div>
       </header>
 
-      <section className="relative border-b border-border bg-background pb-16 pt-12 sm:pb-24 sm:pt-20">
+      <section id="jornada" className="relative bg-surface py-16 sm:py-24">
         <div className="journey-line" aria-hidden />
-        <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6">
-          <span className="badge-orange">Assistente Virtual • CX & Jornada do Cliente</span>
-          <h1 className="mx-auto mt-6 max-w-4xl text-4xl leading-[1.1] sm:text-5xl lg:text-6xl">
-            Não perca mais nenhum cliente. <span className="text-orange">Foque na jornada do cliente.</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground sm:text-xl">
-            Eu cuido do atendimento, do relacionamento e do comercial para que cada contato se sinta ouvido, bem orientado e acompanhado.
-          </p>
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <a href={WA_HERO} target="_blank" rel="noopener noreferrer" className="btn-orange text-base">
-              <MessageCircle className="h-5 w-5" /> Falar no WhatsApp
-            </a>
-            <a href="#jornada" className="btn-outline text-base">
-              Conhecer meu trabalho <ArrowDown className="h-5 w-5" />
-            </a>
-          </div>
-          <SpeechCard />
-        </div>
-      </section>
-
-      <section id="jornada" className="bg-surface py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <span className="badge-orange">Especialista em CX e jornada do cliente</span>
           <div className="mt-6 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-            <h2 className="text-3xl sm:text-4xl">Atendimento humano, claro e ágil — do primeiro contato ao pós-venda.</h2>
+            <h1 className="text-4xl leading-[1.1] sm:text-5xl lg:text-6xl">Atendimento humano, claro e ágil — do primeiro contato ao pós-venda.</h1>
             <p className="text-lg text-muted-foreground">
               Uma operação organizada para entender necessidades, reduzir ruídos e construir relacionamentos que continuam depois da compra.
             </p>
@@ -198,8 +177,25 @@ function Index() {
         </div>
       </section>
 
-      <section id="contato" className="bg-background py-16 sm:py-24">
+      <section id="contato" className="relative bg-background py-16 sm:py-24">
         <div className="mx-auto max-w-5xl px-4 text-center sm:px-6">
+          <span className="badge-orange">Assistente Virtual • CX & Jornada do Cliente</span>
+          <h2 className="mx-auto mt-6 max-w-4xl text-4xl leading-[1.1] sm:text-5xl">
+            Não perca mais nenhum cliente. <span className="text-orange">Foque na jornada do cliente.</span>
+          </h2>
+          <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground sm:text-xl">
+            Eu cuido do atendimento, do relacionamento e do comercial para que cada contato se sinta ouvido, bem orientado e acompanhado.
+          </p>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <a href={WA_HERO} target="_blank" rel="noopener noreferrer" className="btn-orange text-base">
+              <MessageCircle className="h-5 w-5" /> Falar no WhatsApp
+            </a>
+            <a href="#triagem" className="btn-outline text-base">
+              Enviar mensagem <ArrowDown className="h-5 w-5" />
+            </a>
+          </div>
+          <SpeechCard />
+          <div className="mt-16 border-t border-border pt-16">
           <span className="badge-orange">Atendimento e contato</span>
           <h2 className="mx-auto mt-5 max-w-3xl text-3xl sm:text-4xl">Vamos conversar sobre a experiência que você quer oferecer aos seus clientes?</h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
@@ -212,6 +208,7 @@ function Index() {
             <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="contact-card">
               <Linkedin className="h-6 w-6 text-orange" /><strong>LinkedIn</strong><span>Ver perfil profissional</span>
             </a>
+          </div>
           </div>
         </div>
       </section>
