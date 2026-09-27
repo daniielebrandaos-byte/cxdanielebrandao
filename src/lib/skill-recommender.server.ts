@@ -74,7 +74,7 @@ export async function createSkillRecommendation(need: string) {
       throw new Error("A recomendação não retornou conteúdo.");
     }
 
-    return recommendation;
+    return recommendation.replaceAll("**", "");
   } catch (error) {
     throw new Error(safeGatewayMessage(error));
   }
