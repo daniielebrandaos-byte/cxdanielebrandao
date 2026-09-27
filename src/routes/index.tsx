@@ -1,13 +1,38 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BadgeCheck, Ear, HeartHandshake, Linkedin, MessageCircle, ShieldCheck, TrendingUp, Zap } from "lucide-react";
+import {
+  ArrowDown,
+  BadgeCheck,
+  CalendarCheck,
+  Ear,
+  HeartHandshake,
+  Linkedin,
+  Mail,
+  MessageCircle,
+  ShieldCheck,
+  Sparkles,
+  TrendingUp,
+  Zap,
+} from "lucide-react";
 
 import { SpeechCard } from "@/components/landing/SpeechCard";
 import { TriagemForm } from "@/components/landing/TriagemForm";
-import { BRAND, LINKEDIN, WA_HERO, WHATSAPP_NUMBER, extras, results, skills, strategies, tools } from "@/components/landing/data";
+import {
+  BRAND,
+  EMAIL,
+  LINKEDIN,
+  WA_HERO,
+  WHATSAPP_NUMBER,
+  coreServices,
+  extras,
+  results,
+  skills,
+  strategies,
+  tools,
+} from "@/components/landing/data";
 
-const TITLE = "Daniele Brandão — Assistente Virtual Comercial (SDR, Closer e Recuperação)";
+const TITLE = "Daniele Brandão — Especialista em CX e Jornada do Cliente";
 const DESCRIPTION =
-  "Assistência Virtual Comercial especializada em triagem de leads, fechamento de vendas, upsell, cross-sell e recuperação de clientes no WhatsApp.";
+  "Atendimento humanizado, gestão da jornada do cliente, triagem de leads, apoio comercial e relacionamento no WhatsApp.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,151 +49,195 @@ export const Route = createFileRoute("/")({
 });
 
 const skillIcons = [Ear, Zap, ShieldCheck];
+const serviceIcons = [HeartHandshake, CalendarCheck, TrendingUp];
 
 function Index() {
   return (
-    <main className="min-h-screen bg-background text-ink">
-      <header className="sticky top-0 z-40 bg-navy text-navy-foreground">
+    <main className="min-h-screen overflow-hidden bg-background text-ink">
+      <header className="sticky top-0 z-40 border-b border-border/80 bg-background/95 backdrop-blur-xl">
         <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 py-3 sm:px-6">
-          <span className="truncate text-base font-extrabold tracking-tight">{BRAND}</span>
-          <a href="#triagem" className="btn-orange shrink-0 px-4 py-2 text-sm">Fazer triagem</a>
+          <span className="truncate text-base font-extrabold text-ink">{BRAND}</span>
+          <a href="#contato" className="btn-orange shrink-0 px-4 py-2 text-sm">
+            Atendimento e contato
+          </a>
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="bg-navy pb-16 pt-10 text-navy-foreground sm:pb-24 sm:pt-16">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6">
-          <span className="badge-orange !text-orange">Assistente Virtual • Atendimento & Comercial</span>
-          <h1 className="mt-5 text-4xl leading-[1.1] sm:text-5xl lg:text-6xl">
-            Não perca mais nenhuma venda por falta de tempo.{" "}
-            <span className="text-orange">Eu cuido do atendimento e do comercial do seu negócio.</span>
+      <section className="relative border-b border-border bg-background pb-16 pt-12 sm:pb-24 sm:pt-20">
+        <div className="journey-line" aria-hidden />
+        <div className="relative mx-auto max-w-5xl px-4 text-center sm:px-6">
+          <span className="badge-orange">Assistente Virtual • CX & Jornada do Cliente</span>
+          <h1 className="mx-auto mt-6 max-w-4xl text-4xl leading-[1.1] sm:text-5xl lg:text-6xl">
+            Não perca mais nenhum cliente. <span className="text-orange">Foque na jornada do cliente.</span>
           </h1>
-          <p className="mt-6 text-lg text-navy-foreground/85 sm:text-xl">
-            Assistência Virtual Comercial especializada em triagem de leads (SDR), fechamento de vendas (Closer) e recuperação de clientes no WhatsApp.
+          <p className="mx-auto mt-6 max-w-3xl text-lg text-muted-foreground sm:text-xl">
+            Eu cuido do atendimento, do relacionamento e do comercial para que cada contato se sinta ouvido, bem orientado e acompanhado.
           </p>
-          <p className="mt-3 text-base text-navy-foreground/70 sm:text-lg">
-            Assistente Virtual especialista em Cross-sell e Upsell. Eu transformo os seus clientes atuais em compradores recorrentes usando abordagens personalizadas no WhatsApp.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <a href={WA_HERO} target="_blank" rel="noopener noreferrer" className="btn-orange text-base">
-              <MessageCircle className="h-5 w-5" /> Falar no WhatsApp Profissional
+              <MessageCircle className="h-5 w-5" /> Falar no WhatsApp
             </a>
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="btn-outline text-base">
-              <Linkedin className="h-5 w-5" /> Ver Perfil no LinkedIn
+            <a href="#jornada" className="btn-outline text-base">
+              Conhecer meu trabalho <ArrowDown className="h-5 w-5" />
             </a>
           </div>
           <SpeechCard />
         </div>
       </section>
 
-      {/* Habilidades */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <span className="badge-orange">Especialista, não generalista</span>
-        <h2 className="mt-5 max-w-2xl text-3xl sm:text-4xl">Atendimento humano, claro e ágil — do primeiro contato ao fechamento.</h2>
-        <div className="mt-10 grid gap-5 md:grid-cols-3">
-          {skills.map((s, i) => {
-            const Icon = skillIcons[i] ?? HeartHandshake;
-            return (
-              <div key={s.title} className="card-soft p-6">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-orange/10">
-                  <Icon className="h-6 w-6 text-orange" />
-                </span>
-                <h3 className="mt-4 text-xl">{s.title}</h3>
-                <p className="mt-2 text-muted-foreground">{s.text}</p>
-              </div>
-            );
-          })}
-        </div>
-        <div className="mt-8 flex flex-wrap gap-3">
-          {results.map((r) => (
-            <span key={r} className="inline-flex items-center gap-2 rounded-full bg-navy px-4 py-2 text-sm font-bold text-navy-foreground">
-              <TrendingUp className="h-4 w-4 text-orange" /> {r}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* Estratégias */}
-      <section className="bg-navy py-16 text-navy-foreground sm:py-20">
+      <section id="jornada" className="bg-surface py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <span className="badge-orange !text-orange">O coração do serviço</span>
-          <h2 className="mt-5 max-w-2xl text-3xl text-navy-foreground sm:text-4xl">Estratégias comerciais que geram receita com quem já é seu cliente.</h2>
+          <span className="badge-orange">Especialista em CX e jornada do cliente</span>
+          <div className="mt-6 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+            <h2 className="text-3xl sm:text-4xl">Atendimento humano, claro e ágil — do primeiro contato ao pós-venda.</h2>
+            <p className="text-lg text-muted-foreground">
+              Uma operação organizada para entender necessidades, reduzir ruídos e construir relacionamentos que continuam depois da compra.
+            </p>
+          </div>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {strategies.map((s) => (
-              <div key={s.title} className="rounded-2xl border border-navy-foreground/15 bg-navy-foreground/5 p-6 transition-colors hover:border-orange">
-                <span className="text-3xl" aria-hidden>{s.emoji}</span>
-                <h3 className="mt-4 text-xl text-navy-foreground">{s.title}</h3>
-                <p className="mt-3 text-navy-foreground/75">{s.text}</p>
+            {skills.map((skill, index) => {
+              const Icon = skillIcons[index] ?? HeartHandshake;
+              return (
+                <article key={skill.title} className="card-soft group p-6">
+                  <span className="icon-tile"><Icon className="h-6 w-6" /></span>
+                  <h3 className="mt-5 text-xl">{skill.title}</h3>
+                  <p className="mt-2 text-muted-foreground">{skill.text}</p>
+                </article>
+              );
+            })}
+          </div>
+          <div className="mt-8 grid gap-3 md:grid-cols-3">
+            {results.map((result) => (
+              <div key={result} className="metric-strip">
+                <TrendingUp className="h-5 w-5 shrink-0 text-orange" />
+                <span>{result}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Ferramentas */}
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
-        <span className="badge-orange">Ferramentas de operação</span>
-        <h2 className="mt-5 text-3xl sm:text-4xl">O ecossistema que eu uso no dia a dia.</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-2">
-          {tools.map((t) => (
-            <div key={t.group} className="card-soft p-6">
-              <h3 className="text-lg">{t.group}</h3>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {t.items.map((it) => (
-                  <li key={it} className="rounded-full border border-border bg-background px-3 py-1.5 text-sm font-semibold">{it}</li>
-                ))}
-              </ul>
+      <section className="bg-background py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <div className="lg:sticky lg:top-28">
+              <span className="badge-orange">Serviços que já realizo</span>
+              <h2 className="mt-5 text-3xl sm:text-4xl">Cuidado em cada ponto de contato.</h2>
+              <p className="mt-4 text-muted-foreground">Do primeiro “olá” à organização da agenda e ao acompanhamento após a venda.</p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Triagem */}
-      <section id="triagem" className="mx-auto max-w-3xl scroll-mt-20 px-4 pb-16 sm:px-6 sm:pb-20">
-        <h2 className="text-3xl sm:text-4xl">📋 Anamnese e Triagem Comercial do Seu Negócio</h2>
-        <p className="mt-3 text-lg text-muted-foreground">
-          Preencha os dados abaixo para identificarmos a real necessidade da sua empresa e avaliarmos a intenção de contratação.
-        </p>
-        <div className="mt-8"><TriagemForm /></div>
-      </section>
-
-      {/* Extras */}
-      <section className="border-t border-border">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-          <h2 className="text-xl text-muted-foreground">Serviços adicionais</h2>
-          <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-            {extras.map((e) => (
-              <li key={e.title} className="flex gap-3">
-                <span aria-hidden className="text-xl">{e.emoji}</span>
-                <p><strong>{e.title}:</strong> <span className="text-muted-foreground">{e.text}</span></p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <footer className="bg-navy px-4 py-12 text-navy-foreground sm:px-6">
-        <div className="mx-auto max-w-6xl text-center">
-          <p className="text-2xl font-bold tracking-tight sm:text-3xl">
-            Não perca mais nenhuma venda. <span className="text-orange">Eu cuido do atendimento e do comercial do seu negócio.</span>
-          </p>
-          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-            <a href={WA_HERO} target="_blank" rel="noopener noreferrer" className="btn-orange"><MessageCircle className="h-5 w-5" /> WhatsApp</a>
-            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="btn-outline"><Linkedin className="h-5 w-5" /> LinkedIn</a>
+            <div className="space-y-4">
+              {coreServices.map((service, index) => {
+                const Icon = serviceIcons[index] ?? Sparkles;
+                return (
+                  <article key={service.title} className="service-row group">
+                    <span className="service-number">0{index + 1}</span>
+                    <span className="icon-tile"><Icon className="h-6 w-6" /></span>
+                    <div>
+                      <h3 className="text-xl">{service.title}</h3>
+                      <p className="mt-2 text-muted-foreground">{service.text}</p>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
           </div>
-          <p className="mt-6 flex items-center justify-center gap-2 text-sm text-navy-foreground/60">
-            <BadgeCheck className="h-4 w-4 text-orange" /> {BRAND} · Contrato digital via ZapSign
-          </p>
+        </div>
+      </section>
+
+      <section className="bg-surface py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <span className="badge-orange">Estratégia comercial com visão de jornada</span>
+          <h2 className="mt-5 max-w-3xl text-3xl sm:text-4xl">Relacionamento que gera novas oportunidades com respeito ao momento do cliente.</h2>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {strategies.map((strategy, index) => (
+              <article key={strategy.title} className={`card-soft p-6 ${index === 1 ? "md:translate-y-6" : ""}`}>
+                <span className="text-3xl" aria-hidden>{strategy.emoji}</span>
+                <h3 className="mt-4 text-xl">{strategy.title}</h3>
+                <p className="mt-3 text-muted-foreground">{strategy.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-background py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
+            <div>
+              <span className="badge-orange">Conhecimentos e habilidades</span>
+              <h2 className="mt-5 text-3xl sm:text-4xl">Ferramentas que conheço e utilizo na operação.</h2>
+              <p className="mt-4 text-muted-foreground">Elas apoiam meu trabalho e a rotina do seu negócio; não são plataformas que ofereço como serviço.</p>
+            </div>
+            <div className="grid gap-5">
+              {tools.map((tool) => (
+                <article key={tool.group} className="card-soft p-6">
+                  <h3 className="text-lg">{tool.group}</h3>
+                  {tool.description && <p className="mt-2 text-sm text-muted-foreground">{tool.description}</p>}
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {tool.items.map((item) => <li key={item} className="skill-chip">{item}</li>)}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-surface py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <span className="badge-orange">Serviços adicionais</span>
+          <h2 className="mt-5 text-3xl sm:text-4xl">Apoio complementar para sua presença digital.</h2>
+          <div className="mt-8 grid gap-5 sm:grid-cols-2">
+            {extras.map((extra) => (
+              <article key={extra.title} className="card-soft flex gap-4 p-6">
+                <span aria-hidden className="text-2xl">{extra.emoji}</span>
+                <div><h3 className="text-lg">{extra.title}</h3><p className="mt-2 text-muted-foreground">{extra.text}</p></div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contato" className="bg-background py-16 sm:py-24">
+        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6">
+          <span className="badge-orange">Atendimento e contato</span>
+          <h2 className="mx-auto mt-5 max-w-3xl text-3xl sm:text-4xl">Vamos conversar sobre a experiência que você quer oferecer aos seus clientes?</h2>
+          <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="contact-card">
+              <MessageCircle className="h-6 w-6 text-orange" /><strong>WhatsApp</strong><span>Iniciar conversa</span>
+            </a>
+            <a href={`mailto:${EMAIL}`} className="contact-card">
+              <Mail className="h-6 w-6 text-orange" /><strong>E-mail</strong><span>{EMAIL}</span>
+            </a>
+            <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="contact-card">
+              <Linkedin className="h-6 w-6 text-orange" /><strong>LinkedIn</strong><span>Ver perfil profissional</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="triagem" className="bg-surface px-4 py-16 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center">
+            <span className="badge-orange">Última etapa • Triagem de CX</span>
+            <h2 className="mt-5 text-3xl sm:text-4xl">Conte um pouco sobre o seu negócio.</h2>
+            <p className="mt-3 text-lg text-muted-foreground">Suas respostas ajudam a entender sua jornada atual antes da nossa conversa.</p>
+          </div>
+          <div className="mt-8"><TriagemForm /></div>
+        </div>
+      </section>
+
+      <footer className="border-t border-border bg-background px-4 py-10 sm:px-6">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-5 text-center sm:flex-row sm:text-left">
+          <div>
+            <p className="text-lg font-bold text-ink">{BRAND}</p>
+            <p className="mt-1 text-sm text-muted-foreground">Especialista em CX e jornada do cliente</p>
+          </div>
+          <p className="flex items-center gap-2 text-sm text-muted-foreground"><BadgeCheck className="h-4 w-4 text-orange" /> Contrato digital via ZapSign</p>
         </div>
       </footer>
 
-      <a
-        href={`https://wa.me/${WHATSAPP_NUMBER}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Conversar no WhatsApp"
-        className="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-orange text-orange-foreground shadow-[var(--shadow-lift)] transition-transform hover:scale-105"
-      >
+      <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" aria-label="Conversar no WhatsApp" className="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-orange text-orange-foreground shadow-[var(--shadow-lift)] transition-transform hover:scale-105">
         <MessageCircle className="h-7 w-7" />
       </a>
     </main>
