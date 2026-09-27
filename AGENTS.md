@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Use Sora for headings and Manrope for body copy; this keeps the CX presentation refined and readable.
+- Keep AI Gateway calls in server-only helpers and expose one-shot recommendations through a server function; this protects prompts and credentials.
