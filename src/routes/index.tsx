@@ -144,9 +144,9 @@ function Index() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
-              <span className="badge-orange">Conhecimentos e habilidades</span>
-              <h2 className="mt-5 text-3xl sm:text-4xl">Ferramentas que conheço e utilizo na operação.</h2>
-              <p className="mt-4 text-muted-foreground">Elas apoiam meu trabalho e a rotina do seu negócio; não são plataformas que ofereço como serviço.</p>
+              <span className="badge-orange">Habilidades</span>
+              <h2 className="mt-5 text-3xl sm:text-4xl">Ferramentas que conheço e utilizo.</h2>
+              <p className="mt-4 text-muted-foreground">Elas apoiam meu atendimento e a rotina do seu negócio; não são plataformas que ofereço como serviço.</p>
             </div>
             <div className="grid gap-5">
               {tools.map((tool) => (
