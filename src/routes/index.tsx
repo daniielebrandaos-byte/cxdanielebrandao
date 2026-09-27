@@ -63,17 +63,18 @@ function Index() {
         </div>
       </header>
 
-      <section id="jornada" className="relative bg-surface py-16 sm:py-24">
-        <div className="journey-line" aria-hidden />
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <span className="badge-orange">Especialista em CX e jornada do cliente</span>
-          <div className="mt-6 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-            <h1 className="text-4xl leading-[1.1] sm:text-5xl lg:text-6xl">Atendimento humano, claro e ágil — do primeiro contato ao pós-venda.</h1>
-            <p className="text-lg text-muted-foreground">
-              Uma operação organizada para entender necessidades, reduzir ruídos e construir relacionamentos que continuam depois da compra.
+      <section id="jornada" className="bg-surface py-16 sm:py-24">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <div className="max-w-2xl border-l-4 border-orange pl-5 sm:pl-8">
+            <span className="badge-orange">Atendimento especializado</span>
+            <h1 className="mt-5 text-4xl leading-tight sm:text-5xl">
+              Especialista em CX e <span className="text-orange">jornada do cliente</span>
+            </h1>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Atendimento humano, claro e ágil — do primeiro contato ao pós-venda. Uma operação organizada para entender necessidades, reduzir ruídos e fortalecer relacionamentos.
             </p>
           </div>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
             {skills.map((skill, index) => {
               const Icon = skillIcons[index] ?? HeartHandshake;
               return (
@@ -85,7 +86,7 @@ function Index() {
               );
             })}
           </div>
-          <div className="mt-8 grid gap-3 md:grid-cols-3">
+          <div className="mt-6 grid gap-3 md:grid-cols-3">
             {results.map((result) => (
               <div key={result} className="metric-strip">
                 <TrendingUp className="h-5 w-5 shrink-0 text-orange" />
