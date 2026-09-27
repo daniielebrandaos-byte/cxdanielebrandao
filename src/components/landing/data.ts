@@ -45,7 +45,7 @@ export const strategies = [
 ];
 
 export const tools = [
-  { group: "Habilidades em CRMs e Gestão", description: "Ferramentas que domino para apoiar sua operação — não são plataformas vendidas como serviço.", items: ["Salesforce", "Syonet", "OTO", "Avec", "HubSpot", "Trello"] },
+  { group: "Habilidades em CRMs e Gestão", description: "Ferramentas que domino e utilizo no atendimento — não são plataformas vendidas como serviço.", items: ["Salesforce", "Syonet", "OTO", "Avec", "HubSpot", "Trello"] },
   { group: "Design Básico & Produtividade", items: ["Canva básico", "Google Calendar", "Outlook"] },
 ];
 
