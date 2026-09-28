@@ -20,6 +20,8 @@ export function SpeechCard() {
     }
     const u = new SpeechSynthesisUtterance(SPEECH_TEXT);
     u.lang = "pt-BR";
+    u.rate = 1.08;
+    u.pitch = 1;
     const voice = synth.getVoices().find((v) => v.lang.toLowerCase().startsWith("pt"));
     if (voice) u.voice = voice;
     u.onend = () => setSpeaking(false);
