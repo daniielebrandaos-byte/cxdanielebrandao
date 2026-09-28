@@ -6,7 +6,7 @@ export const WA_HERO =
   "https://wa.me/5511948546613?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais%20sobre%20seus%20servi%C3%A7os%20de%20Assistente%20Virtual.";
 
 export const SPEECH_TEXT =
-  "Olá! Seja bem-vindo. Meu nome é Daniele Brandão e sou especialista em experiência e jornada do cliente. Ajudo empresas a cuidarem de cada contato com atenção, estratégia e atendimento humanizado. Atuo na triagem de leads, fechamento de vendas, recuperação de clientes, gestão de agenda, agendamentos e estratégias de cross-sell e upsell. Clique no WhatsApp para conversarmos.";
+  "Olá, seja bem-vindo! Meu nome é Daniele Brandão e sou especialista em experiência e jornada do cliente. Ajudo empresas a cuidar de cada contato com atenção e atendimento humanizado, desde a triagem de leads e o fechamento de vendas até a recuperação de clientes, a gestão de agenda e os agendamentos. Também desenvolvo estratégias de cross-sell e upsell. Clique no WhatsApp para conversarmos!";
 
 export const skills = [
   { title: "Empatia & Escuta Ativa", text: "Entendimento real das necessidades do cliente antes de agir." },

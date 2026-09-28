@@ -103,7 +103,7 @@ function Index() {
             <div className="lg:sticky lg:top-28">
               <span className="badge-orange">Serviços que já realizo</span>
               <h2 className="mt-5 text-3xl sm:text-4xl">Fluxo da jornada</h2>
-              <p className="mt-4 text-muted-foreground">Do primeiro “olá” à organização da agenda e ao acompanhamento após a venda.</p>
+              <p className="mt-4 text-muted-foreground">Fluidez no contato para acompanhar as necessidades do cliente.</p>
             </div>
             <div className="space-y-4">
               {coreServices.map((service, index) => {
